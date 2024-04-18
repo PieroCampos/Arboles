@@ -3,8 +3,8 @@
 using namespace std;
 
 #define T 2 //constante que define el valor de T en 3
-//#define T 1 //Ã¡rbol binario
-
+//#define T 1 //Ã¡rbol binario 
+//añadido
 
 
 struct BTreeNode{

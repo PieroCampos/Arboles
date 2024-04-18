@@ -18,7 +18,7 @@ BTreeNode* initNode(bool hoja); //Inicializa un nuevo nodo del árbol
 void insertNotFull(BTreeNode* x, int k); //inserta una clave en un nodo no lleno
 void splitChild(BTreeNode* x, int i, BTreeNode *y); //divide el nodo hijo cuando el nodo está lleno
 void insert(BTreeNode*& root, int k); //Insertar una calve en el árbol
-void print(BTreeNode* root); //Imprime el contenido de un árbol
+void print(BTreeNode* root, int space=0); //Imprime el contenido de un árbol
 
 int main()
 {
@@ -49,7 +49,7 @@ void splitChild(BTreeNode* x, int i, BTreeNode *y){
     z->n = T-1;
     // Copia las ultimas T-1 claves desde (y) hasta (z)
     for(int j=0; j<T-1; j++){
-    	z->keys[j] = y->keys[j+t];	
+    	z->keys[j] = y->keys[j+T];	
 	}
 	//Si (y) no es una hoja, copia tambien en los ultimos T hijos de (y) a (z)
 	
@@ -86,6 +86,27 @@ void insert(BTreeNode*& root, int k){ // K => es el valor del dato a ingresar
       }
   }
 } 
-void print(BTreeNode* root){
+void print(BTreeNode* root, int space){
     //Imprime el contenido de un árbol
+    if(root!=nullptr){
+    	//Incrementamos el contador de espacios para diferenciar los niveles
+    	int count = space + 5;
+    	//Llamamos recursivamente para imprimir el subárbol derecho
+    	print(root->C[root->n],count);
+    	
+    	for(int i=root->n-1;i>=0; i--){
+    		//Imprime espacios para diferenciar los niveles:
+    		cout<<endl;
+    		for(int j=0; j<space; j++){ //marcamos espacios para separar los valores
+    			cout<<' ';
+			}
+			//Imprimimos cada clave:
+			cout<<root->keys[i]<<endl;
+			
+			//Llamamos recursivamente para imprimir el subárbol izquierdo
+			print(root->C[i],count);
+		}
+    	
+	}
+    
 } 
