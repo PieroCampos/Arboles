@@ -5,7 +5,7 @@ using namespace std;
 #define T 2 //constante que define el valor de T en 3
 //#define T 1 //Ã¡rbol binario 
 //añadido
-
+//Modificacion adicional
 
 struct BTreeNode{
     int keys[2*T-1]; //arreglo para almacenar hasta 2*T-1 claves en cada nodo
